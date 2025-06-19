@@ -1,0 +1,25 @@
+{
+  "name": "padle-check",
+  "version": "1.0.0",
+  "description": "Verifică automat sloturile disponibile pentru Padle1 și Padle2 pe Calendis și trimite notificări Telegram.",
+  "main": "padle.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node padle.js"
+  },
+  "keywords": [
+    "padle",
+    "calendis",
+    "telegram",
+    "notificare",
+    "automated-check"
+  ],
+  "author": "Andrei Pe",
+  "license": "MIT",
+  "dependencies": {
+    "@playwright/test": "^1.44.0",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.5.0",
+    "node-fetch": "^2.6.7"
+  }
+}
