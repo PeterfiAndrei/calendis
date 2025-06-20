@@ -1,3 +1,6 @@
 .env
-last_slots.json
 node_modules/
+
+# Git files
+last_slots.json
+settings_calendis.json
