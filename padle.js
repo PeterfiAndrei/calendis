@@ -1,5 +1,5 @@
-const { loadPreviousSlotsFromGist, saveSlotsToGist } = require('./gistCache')
-const { loadSettingsFromGist } = require('./loadSettingsFromGist')
+const { loadPreviousSlotsFromGist, saveSlotsToGist } = require('./utils/gistCache')
+const { loadSettingsFromGist } = require('./utils/loadSettingsFromGist')
 
 const { request } = require('@playwright/test');
 const dayjs = require('dayjs');
@@ -9,7 +9,8 @@ const utc = require('dayjs/plugin/utc');
 const timezone = require('dayjs/plugin/timezone');
 dayjs.extend(utc);
 dayjs.extend(timezone);
-const { sendTelegramNotification } = require('./telegramNotification');
+const { sendTelegramNotification } = require('./utils/telegramNotification');
+require('dotenv').config();
 
 const CACHE_FILE = path.join(__dirname, 'last_slots.json');
 
@@ -42,10 +43,10 @@ if (!fs.existsSync(CACHE_FILE)) {
   };
   const services = [
     { id: 39707, name: 'Padle1-Floresti', location_id: 4870 },
-    { id: 39708, name: 'Padle2-Floresti', location_id: 4870 },
-    { id: 39692, name: 'Tenis1-Floresti', location_id: 4870 },
-    { id: 39706, name: 'Tenis2-Floresti', location_id:4870 },
-    { id: 37695, name: 'Tenis2-LaTerenuri', location_id: 4609 },
+    // { id: 39708, name: 'Padle2-Floresti', location_id: 4870 },
+    // { id: 39692, name: 'Tenis1-Floresti', location_id: 4870 },
+    // { id: 39706, name: 'Tenis2-Floresti', location_id:4870 },
+    // { id: 37695, name: 'Tenis2-LaTerenuri', location_id: 4609 },
   ];
 
   const apiRequestContext = await request.newContext({ extraHTTPHeaders: headers });

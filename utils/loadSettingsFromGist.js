@@ -3,25 +3,26 @@ require('dotenv').config();
 
 async function loadSettingsFromGist() {
   const gistId = process.env.SETTINGS_GIST_ID;
-  const token = process.env.GIST_TOKEN;
+  const GIST_TOKEN = process.env.GIST_TOKEN;
+  const FILENAME = 'settings_calendis.json';
 
   const response = await fetch(`https://api.github.com/gists/${gistId}`, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${GIST_TOKEN}`,
       Accept: 'application/vnd.github.v3+json'
     }
   });
+    const data = await response.json();
 
-  if (!response.ok) {
-    console.error(`❌ Eroare la încărcarea Gist-ului: ${response.statusText}`);
-    return null;
-  }
-
-  const gistData = await response.json();
-  const fileContent = gistData.files['settings_calendis.json']?.content;
+    if (!data.files || !data.files[FILENAME]) {
+      console.warn(`⚠️ Fișierul ${FILENAME} nu există în Gist. Întoarcem []`);
+      return [];
+    }
+    
+  const fileContent = data.files[FILENAME]?.content;
 
   if (!fileContent) {
-    console.error('❌ Fișierul settings_calendis.json nu există în Gist.');
+    console.error(`❌ Fișierul ${FILENAME} nu există în Gist.`);
     return null;
   }
 
