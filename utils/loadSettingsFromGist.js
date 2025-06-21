@@ -7,10 +7,7 @@ async function loadSettingsFromGist() {
   const FILENAME = 'settings_calendis.json';
 
   const response = await fetch(`https://api.github.com/gists/${gistId}`, {
-    headers: {
-      Authorization: `Bearer ${GIST_TOKEN}`,
-      Accept: 'application/vnd.github.v3+json'
-    }
+      headers: { Authorization: `Bearer ${GIST_TOKEN}` }
   });
     const data = await response.json();
 
