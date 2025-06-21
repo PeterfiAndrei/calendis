@@ -55,7 +55,7 @@ if (!fs.existsSync(CACHE_FILE)) {
   let notificationSlots = [];
   let noOfEvents = 0
   for (const service of services) {
-    for (let i = 0; i < 14; i++) {
+    for (let i = 0; i <= 14; i++) {
       const date = today.add(i, 'day');
       const timestamp = Math.floor(date.unix());
 
@@ -101,7 +101,7 @@ if (!fs.existsSync(CACHE_FILE)) {
 
   // 📢 Trimitem notificare DOAR pentru sloturile NOI
 if (newSlots.length > 0) {
-  const message = `📢 Sloturi NOI după ora ${STARTING_HOUR}:00:\n\n${newSlots.join('\n')}`;
+  const message = `📢 Sloturi NOI după ora ${STARTING_HOUR} / ${STARTING_HOUR_WEEKEND}(weekend)\n\n${newSlots.join('\n')}`;
   console.log(message)
   await sendTelegramNotification(message);
 } else {
