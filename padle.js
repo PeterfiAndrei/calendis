@@ -43,10 +43,10 @@ if (!fs.existsSync(CACHE_FILE)) {
   };
   const services = [
     { id: 39707, name: 'Padle1-Floresti', location_id: 4870 },
-    // { id: 39708, name: 'Padle2-Floresti', location_id: 4870 },
-    // { id: 39692, name: 'Tenis1-Floresti', location_id: 4870 },
-    // { id: 39706, name: 'Tenis2-Floresti', location_id:4870 },
-    // { id: 37695, name: 'Tenis2-LaTerenuri', location_id: 4609 },
+    { id: 39708, name: 'Padle2-Floresti', location_id: 4870 },
+    { id: 39692, name: 'Tenis1-Floresti', location_id: 4870 },
+    { id: 39706, name: 'Tenis2-Floresti', location_id:4870 },
+    { id: 37695, name: 'Tenis2-LaTerenuri', location_id: 4609 },
   ];
 
   const apiRequestContext = await request.newContext({ extraHTTPHeaders: headers });
