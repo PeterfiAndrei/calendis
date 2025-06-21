@@ -14,6 +14,7 @@ async function loadSettingsFromGist() {
   });
     const data = await response.json();
 
+    console.log(Object.keys(data.files))
     if (!data.files || !data.files[FILENAME]) {
       console.warn(`⚠️ Fișierul ${FILENAME} nu există în Gist. Întoarcem []`);
       return [];

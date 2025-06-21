@@ -12,7 +12,6 @@ async function loadPreviousSlotsFromGist() {
     });
 
     const data = await res.json();
-
     if (!data.files || !data.files[FILENAME]) {
       console.warn(`⚠️ Fișierul ${FILENAME} nu există în Gist. Întoarcem []`);
       return [];
