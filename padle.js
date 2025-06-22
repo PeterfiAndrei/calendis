@@ -11,6 +11,7 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 const { sendTelegramNotification } = require('./utils/telegramNotification');
 require('dotenv').config();
+const daysShort = ['Du', 'Lu', 'Ma', 'Mi', 'Jo', 'Vi', 'Sâ'];
 
 const CACHE_FILE = path.join(__dirname, 'last_slots.json');
 
@@ -46,7 +47,7 @@ if (!fs.existsSync(CACHE_FILE)) {
     { id: 39708, name: 'Padle2-Floresti', location_id: 4870 },
     { id: 39692, name: 'Tenis1-Floresti', location_id: 4870 },
     { id: 39706, name: 'Tenis2-Floresti', location_id:4870 },
-    { id: 37695, name: 'Tenis2-LaTerenuri', location_id: 4609 },
+    // { id: 37695, name: 'Tenis-LaTerenuri', location_id: 4609 },
   ];
 
   const apiRequestContext = await request.newContext({ extraHTTPHeaders: headers });
@@ -75,10 +76,12 @@ if (!fs.existsSync(CACHE_FILE)) {
 
           const hour = slotTime.hour();
           const timeStr = slotTime.format('HH:mm');
+          const weekdayShort = daysShort[slotTime.day()];
+
           noOfEvents++;
           if (hour >= dynamicStartHour) {
             const dateStr = date.format('YYYY-MM-DD');
-            notificationSlots.push(`📅 *${dateStr}* - 🕒 *${timeStr}* - 🏓 *${service.name}*`);
+            notificationSlots.push(`🗓 *${weekdayShort}* - 📅 *${dateStr}* - 🕒 *${timeStr}* - 🏓 *${service.name}*`);
           }
         }
       }
