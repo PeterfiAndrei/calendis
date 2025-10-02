@@ -2,7 +2,7 @@ name: Check Padle Slots
 
 on:
   schedule:
-    - cron: '*/5 7-20 * * *'  # din 04:00 până la 20:55 UTC = 10:00–23:00 RO
+    - cron: '*/5 7-19 * * *'  # din 04:00 până la 20:55 UTC = 10:00–23:00 RO
   workflow_dispatch:
 
 jobs:
